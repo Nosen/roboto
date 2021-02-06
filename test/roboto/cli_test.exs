@@ -30,9 +30,9 @@ defmodule Roboto.CLITest do
   end
 
   test "move - allows movement where moving 1 space in current orientation won't exceed table bounds" do
-    # State.start_link()
-    # State.update(%Position{x: 1, y: 2, orientation: :NORTH})
-    # assert {:ok} = Command.handle_move()
+    State.start_link()
+    State.update(%Position{x: 1, y: 2, orientation: :NORTH})
+    assert {:ok} = Command.handle_move()
   end
 
   test "move - returns an error where move command would send robot outside table bounds" do
