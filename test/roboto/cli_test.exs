@@ -6,10 +6,6 @@ defmodule Roboto.CLITest do
 
   alias Roboto.{State, Position, Command}
 
-  test "greets the world" do
-    assert Roboto.CLI.hello() == :world
-  end
-
   test "place - allows place commands where x,y is in table bounds and orientation is valid" do
     State.start_link()
     assert {:ok} = Command.handle_place(1, 2, :NORTH)

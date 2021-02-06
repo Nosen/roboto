@@ -3,20 +3,32 @@ defmodule Roboto.CLI do
   Documentation for `Roboto.CLI`.
   """
 
+  alias Roboto.{Command, State}
+  use Agent
+
   def main(_) do
-    IO.puts hello()
+   State.start_link()
+   listen()
   end
 
-  @doc """
-  Hello world.
+  def listen do
+    IO.gets("> ")
+    |> String.trim
+    |> String.downcase
+    |> String.split(",")
+    |> Enum.join(" ")
+    |> String.split(" ", trim: true)
+    |> Command.truncate_to_place_command
+    |> Command.begin_command_loop
+    |> case do
+      {:error, reason} ->
+        IO.puts "Error: #{reason}"
+        listen()
+      _ ->
+        IO.puts "Commands processed successfully"
+        listen()
+      end
 
-  ## Examples
-
-      iex> Roboto.CLI.hello()
-      :world
-
-  """
-  def hello do
-    :world
   end
+
 end
