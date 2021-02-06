@@ -1,21 +1,24 @@
 # Roboto.CLI
 
-**TODO: Add description**
 
-## Installation
+## Pre-Requisites
+Requires elixir/erlang to be installed on system
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `roboto` to your list of dependencies in `mix.exs`:
+## Setup
 
-```elixir
-def deps do
-  [
-    {:roboto, "~> 0.1.0"}
-  ]
-end
+``` 
+mix deps.get 
+mix escript.build
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/roboto](https://hexdocs.pm/roboto).
+## Run Application
 
+from directory root:
+```
+./roboto
+```
+
+## Run Tests
+```
+mix test
+```
